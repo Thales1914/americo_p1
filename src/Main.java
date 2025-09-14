@@ -1,0 +1,93 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Hospede hospedeManager = new Hospede(null, null, 0, null, false);
+        Funcionario funcionarioManager = new Funcionario(null, null, 0, null);
+        Quarto quartoManager = new Quarto(0, null);
+        Produto produtoManager = new Produto(0, null, 0);
+        Reserva reservaManager = new Reserva(0,0,null,null,false,false,null,null);
+        Consumo consumoManager = new Consumo(0,null,null,0);
+
+        int opcao;
+        do {
+            exibirMenu();
+            try {
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (opcao) {
+                    case 1: hospedeManager.inserir(scanner); break;
+                    case 2: hospedeManager.listar(); break;
+                    case 3: hospedeManager.consultar(scanner); break;
+                    case 4: hospedeManager.atualizar(scanner); break;
+                    case 5: hospedeManager.excluir(scanner); break;
+
+                    case 6: funcionarioManager.inserir(scanner); break;
+                    case 7: funcionarioManager.listar(); break;
+                    case 8: funcionarioManager.consultar(scanner); break;
+                    case 9: funcionarioManager.atualizar(scanner); break;
+                    case 10: funcionarioManager.excluir(scanner); break;
+
+                    case 11: quartoManager.inserir(scanner); break;
+                    case 12: quartoManager.listar(); break;
+                    case 13: quartoManager.consultar(scanner); break;
+                    case 14: quartoManager.atualizar(scanner); break;
+                    case 15: quartoManager.excluir(scanner); break;
+
+                    case 16: produtoManager.inserir(scanner); break;
+                    case 17: produtoManager.listar(); break;
+                    case 18: produtoManager.consultar(scanner); break;
+                    case 19: produtoManager.atualizar(scanner); break;
+                    case 20: produtoManager.excluir(scanner); break;
+
+                    case 21: reservaManager.inserir(scanner); break;
+                    case 22: reservaManager.listar(); break;
+                    case 23: reservaManager.consultar(scanner); break;
+                    case 24: reservaManager.atualizar(scanner); break;
+                    case 25: reservaManager.excluir(scanner); break;
+
+                    case 26: consumoManager.inserir(scanner); break;
+                    case 27: consumoManager.listar(); break;
+                    case 28: consumoManager.consultar(scanner); break;
+                    case 29: consumoManager.atualizar(scanner); break;
+                    case 30: consumoManager.excluir(scanner); break;
+
+                    case 0:
+                        System.out.println("Saindo do sistema... Obrigado!");
+                        break;
+                    default:
+                        System.out.println("Opção inválida! Tente novamente.");
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Erro: Por favor, digite um número para a opção.");
+                scanner.nextLine();
+                opcao = -1;
+            }
+        } while (opcao != 0);
+
+        scanner.close();
+    }
+
+    private static void exibirMenu() {
+        System.out.println("\n---------- MENU PRINCIPAL - HOTEL ----------");
+        System.out.println("--- HÓSPEDES ---");
+        System.out.println(" 1. Inserir | 2. Listar | 3. Consultar | 4. Atualizar | 5. Excluir");
+        System.out.println("--- FUNCIONÁRIOS ---");
+        System.out.println(" 6. Inserir | 7. Listar | 8. Consultar | 9. Atualizar | 10. Excluir");
+        System.out.println("--- QUARTOS ---");
+        System.out.println("11. Inserir | 12. Listar | 13. Consultar | 14. Atualizar | 15. Excluir");
+        System.out.println("--- PRODUTOS ---");
+        System.out.println("16. Inserir | 17. Listar | 18. Consultar | 19. Atualizar | 20. Excluir");
+        System.out.println("--- RESERVAS ---");
+        System.out.println("21. Inserir | 22. Listar | 23. Consultar | 24. Atualizar | 25. Excluir");
+        System.out.println("--- CONSUMOS ---");
+        System.out.println("26. Inserir | 27. Listar | 28. Consultar | 29. Atualizar | 30. Excluir");
+        System.out.println("----------------------------------------------------");
+        System.out.println(" 0. Sair");
+        System.out.print("Escolha uma opção: ");
+    }
+}
